@@ -6,8 +6,6 @@ const contactsRouter = require('./routes/api/contacts')
 
 const app = express();
 
-
-
 app.use(cors());
 
 app.use( async (req, res, next) => {
@@ -22,8 +20,6 @@ app.use('/api/contacts', contactsRouter)
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });
-
-
 
 app.use((req, res) => {
   res.status(404).json({
