@@ -2,11 +2,12 @@ const express = require('express');
 const fs = require('fs/promises');
 const moment = require('moment');
 const cors = require('cors');
-const contactsRouter = require('./routes/api/contacts')
 
 const app = express();
 
 app.use(cors());
+
+const contactsRouter = require('./routes/api/contacts')
 
 app.use( async (req, res, next) => {
     const {method, url} = req;
