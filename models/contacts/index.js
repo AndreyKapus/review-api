@@ -9,6 +9,13 @@ const getAll = async () => {
     return JSON.parse(data);
 };
 
+const getById = async (id) => {
+    const contacts = await getAll();
+    const result = contacts.find(contact => contact.id === id);
+    return result || null
+}
+
 module.exports = {
-    getAll
+    getAll,
+    getById
 }
