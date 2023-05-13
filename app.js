@@ -6,6 +6,7 @@ const cors = require('cors');
 const app = express();
 
 app.use(cors());
+app.use(express.json())
 
 const contactsRouter = require('./routes/api/contacts')
 
@@ -31,4 +32,9 @@ app.use((req, res) => {
 app.listen(3001, () => {
   console.log('Example app listening on port 3001!');
 });
+
+app.use((err, req, res, next) => {
+  const {status = 500, message = "server error"} = err;
+  res.status(status).json({message})
+})
 

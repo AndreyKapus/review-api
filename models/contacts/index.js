@@ -13,9 +13,21 @@ const getById = async (id) => {
     const contacts = await getAll();
     const result = contacts.find(contact => contact.id === id);
     return result || null
+};
+
+const add = async (data) => {
+    const contacts = await getAll();
+    const newContact = {
+       id: nanoid(),
+       ...data,
+    }
+    contacts.push(newContact);
+    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    return newContact;
 }
 
 module.exports = {
     getAll,
-    getById
+    getById,
+    add
 }
