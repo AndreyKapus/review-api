@@ -24,10 +24,22 @@ const add = async (data) => {
     contacts.push(newContact);
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
     return newContact;
+};
+
+const updateById = async (id, data) => {
+    const contacts = await getAll();
+    const index = contacts.findIndex(contact => contact.id === id);
+    if(index === -1) {
+        return null;
+    };
+    contacts[index] = {id, ...data};
+    await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
+    return contacts[index];
 }
 
 module.exports = {
     getAll,
     getById,
-    add
+    add,
+    updateById
 }
