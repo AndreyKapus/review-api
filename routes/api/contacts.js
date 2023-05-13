@@ -1,8 +1,13 @@
 const express = require('express');
 const cors = require('cors');
-
+const Joi = require('joi');
 const contacts = require('../../models/contacts');
-const HttpError = require('../../helpers/HttpError')
+const HttpError = require('../../helpers/HttpError');
+
+const addSchema = Joi.object({
+    name: Joi.string().required(),
+    number: Joi.string().required()
+  })
 
 const router = express.Router()
 
@@ -37,6 +42,10 @@ router.get('/:id', async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
     try{
+        const {error} = addSchema.validate(req.body);
+        if(error) {
+            throw HttpError(400, error.message)
+        }
         const result = await contacts.add(req.body);
         res.status(201).json(result)
     } catch (error) {
