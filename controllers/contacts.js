@@ -2,7 +2,6 @@ const contacts = require('../models/contacts');
 const HttpError = require('../helpers/HttpError');
 const { ctrlWrapper } = require('../helpers');
 
-
   const getAll = async (req, res) => {
         const responce = await contacts.getAll();
         res.json(responce);
