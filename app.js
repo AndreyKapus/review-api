@@ -5,7 +5,18 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 
 const DB_HOST = "mongodb+srv://Andrii:JSsgxlYsvNWRDf8a@cluster0.0v5appb.mongodb.net/contacts_reader?retryWrites=true&w=majority"
-mongoose.connect(DB_HOST).then(() => console.log("connect sucsses")).catch(error => console.log(error.message));
+mongoose.set('strictQuery', true);
+
+mongoose.connect(DB_HOST)
+.then(() => {
+  app.listen(3001);
+  console.log('started at localhost 3001')
+})
+.catch(error => {
+    console.log(error.message)
+    process.exit(1)
+});
+
 
 const app = express();
 
@@ -33,10 +44,6 @@ app.use((req, res) => {
     message: 'Not found'
   })
 })
-
-app.listen(3001, () => {
-  console.log('Example app listening on port 3001!');
-});
 
 app.use((err, req, res, next) => {
   const {status = 500, message = "server error"} = err;
