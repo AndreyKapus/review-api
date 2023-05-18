@@ -3,7 +3,7 @@ const fs = require('fs/promises');
 const moment = require('moment');
 const logger = require("morgan");
 const cors = require('cors');
-require('dotenv').config();
+require("dotenv").config();
 const mongoose = require('mongoose');
 
 // // const DB_HOST = "mongodb+srv://Andrii:JSsgxlYsvNWRDf8a@cluster0.0v5appb.mongodb.net/contacts_reader?retryWrites=true&w=majority"
