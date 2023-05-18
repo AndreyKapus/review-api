@@ -3,8 +3,10 @@ const fs = require('fs/promises');
 const moment = require('moment');
 const cors = require('cors');
 const mongoose = require('mongoose');
+require('dotenv').config()
 
-const DB_HOST = "mongodb+srv://Andrii:JSsgxlYsvNWRDf8a@cluster0.0v5appb.mongodb.net/contacts_reader?retryWrites=true&w=majority"
+// const DB_HOST = "mongodb+srv://Andrii:JSsgxlYsvNWRDf8a@cluster0.0v5appb.mongodb.net/contacts_reader?retryWrites=true&w=majority"
+const {DB_HOST} = process.env;
 mongoose.set('strictQuery', true);
 
 mongoose.connect(DB_HOST)
