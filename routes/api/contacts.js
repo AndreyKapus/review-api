@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const ctrl = require('../../controllers/contacts');
 const {validateBody} = require('../../meddlewares');
-const schemas = require('../../schemas/contacts')
+const {schemas} = require('../../models/contacts/contact')
 
 const router = express.Router()
 
