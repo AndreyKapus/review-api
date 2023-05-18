@@ -11,6 +11,7 @@ const contactSchema = new Schema({
     },
     date: {
         type: String,
+        match: /^\d{2}.\d{2}.\d{4}$/,
         require: true,
     },
     link: {
