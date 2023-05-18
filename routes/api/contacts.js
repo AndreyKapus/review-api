@@ -14,6 +14,6 @@ router.post("/", validateBody(schemas.addSchema), ctrl.addContact)
 
 router.put('/:id', isValidId, validateBody(schemas.addSchema), ctrl.updateById)
 
-// router.delete('/:id', isValidId, ctrl.deleteContact)
+router.delete('/:id', isValidId, ctrl.deleteContact)
 
 module.exports = router;

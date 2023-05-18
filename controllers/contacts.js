@@ -31,21 +31,21 @@ const updateById = async (req, res) => {
         res.json(result)
 };
 
-// const deleteContact = async (req, res) => {
-//         const {id} = req.params;
-//         const result = await contacts.deleteById(id);
-//         if(!result) {
-//             throw HttpError(404, "Not found")
-//         };
-//         res.json({
-//             message: "delete success"
-//         })
-// };
+const deleteContact = async (req, res) => {
+        const {id} = req.params;
+        const result = await Contact.findByIdAndRemove(id);
+        if(!result) {
+            throw HttpError(404, "Not found")
+        };
+        res.json({
+            message: "delete success"
+        })
+};
 
 module.exports = {
     getAll: ctrlWrapper(getAll),
     getById: ctrlWrapper(getById),
     addContact: ctrlWrapper(addContact),
     updateById: ctrlWrapper(updateById),
-    // deleteContact: ctrlWrapper(deleteContact)
+    deleteContact: ctrlWrapper(deleteContact)
 }
