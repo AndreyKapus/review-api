@@ -25,7 +25,7 @@ const app = express();
 app.use(cors());
 app.use(express.json())
 
-const contactsRouter = require('./routes/api/contacts');
+// const contactsRouter = require('./routes/api/contacts');
 const { error } = require('console');
 
 app.use( async (req, res, next) => {
@@ -35,7 +35,7 @@ app.use( async (req, res, next) => {
    next()
 });
 
-app.use('/api/contacts', contactsRouter)
+// app.use('/api/contacts', contactsRouter)
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
