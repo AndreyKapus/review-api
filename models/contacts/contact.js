@@ -29,8 +29,8 @@ contactSchema.post('save', handleStatusError);
 const addSchema = Joi.object({
     name: Joi.string().required(),
     company: Joi.string().required(),
-    date: Joi.string().required(),
-    link: Joi.string().pattern(dateRegexp).required(),
+    date: Joi.string().pattern(dateRegexp).required(),
+    link: Joi.string().required(),
   });
 
 const schemas = {
