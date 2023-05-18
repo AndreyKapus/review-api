@@ -1,10 +1,22 @@
 const {Schema, model} = require('mongoose');
 
 const contactSchema = new Schema({
-    name: String,
-    company: String,
-    date: String,
-    link: String,
+    name: {
+        type: String,
+        require: true,
+    },
+    company: {
+        type: String,
+        require: true,
+    },
+    date: {
+        type: String,
+        require: true,
+    },
+    link: {
+        type: String,
+        require: true,
+    },
 });
 
 const Contact = model('contact', contactSchema);

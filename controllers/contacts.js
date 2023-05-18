@@ -17,10 +17,10 @@ const Contact = require('../models/contacts/contact')
 //         res.json(result)
 // };
 
-// const addContact = async (req, res) => {
-//         const result = await contacts.add(req.body);
-//         res.status(201).json(result)
-// };
+const addContact = async (req, res) => {
+        const result = await Contact.create(req.body);
+        res.status(201).json(result)
+};
 
 // const updateById = async (req, res) => {
 //         const {id} = req.params;
@@ -45,7 +45,7 @@ const Contact = require('../models/contacts/contact')
 module.exports = {
     getAll: ctrlWrapper(getAll),
     // getById: ctrlWrapper(getById),
-    // addContact: ctrlWrapper(addContact),
+    addContact: ctrlWrapper(addContact),
     // updateById: ctrlWrapper(updateById),
     // deleteContact: ctrlWrapper(deleteContact)
 }
