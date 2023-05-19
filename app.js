@@ -6,29 +6,18 @@ const cors = require('cors');
 require("dotenv").config();
 const mongoose = require('mongoose');
 
-// // const DB_HOST = "mongodb+srv://Andrii:JSsgxlYsvNWRDf8a@cluster0.0v5appb.mongodb.net/contacts_reader?retryWrites=true&w=majority"
-// const {DB_HOST} = process.env;
-// mongoose.set('strictQuery', true);
-
-// mongoose.connect(DB_HOST)
-// .then(() => {
-//   app.listen(3001);
-//   console.log('started at localhost 3001')
-// })
-// .catch(error => {
-//     console.log(error.message)
-//     process.exit(1)
-// });
-
 const app = express();
+
+const contactsRouter = require('./routes/api/contacts');
+const authRouter = require('./routes/api/auth')
 
 const formatsLogger = app.get("env") === "development" ? "dev" : "short";
 
 app.use(logger(formatsLogger));
 app.use(cors());
-app.use(express.json())
+app.use(express.json());
 
-const contactsRouter = require('./routes/api/contacts');
+
 
 const { error } = require('console');
 
@@ -39,7 +28,8 @@ app.use( async (req, res, next) => {
    next()
 });
 
-app.use('/api/contacts', contactsRouter)
+app.use('/api/contacts', contactsRouter);
+app.use('/api/auth', authRouter);
 
 app.get('/', (req, res) => {
   res.send('Hello World!');
