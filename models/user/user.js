@@ -18,6 +18,31 @@ const userSchema = new Schema({
     password: {
         type: String,
         minlength: 6,
-        require: 6,
+        require: true,
     }
-}, {versionKey: false, timestamps: true})
+}, {versionKey: false, timestamps: true});
+
+userSchema.post('save', handleStatusError);
+
+const registerSchema = Joi.object({
+    name: Joi.string().required(),
+    email: Joi.string().pattern(emailRegexp).required(),
+    password: Joi.string().min().required(),
+});
+
+const loginSchema = Joi.object({
+    email: Joi.string().pattern(emailRegexp).required(),
+    password: Joi.string().min().required(),
+});
+
+const schemas = {
+    registerSchema,
+    loginSchema,
+};
+
+const User = model('user', userSchema);
+
+module.exports = {
+    User,
+    schemas,
+}
