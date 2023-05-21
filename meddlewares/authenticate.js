@@ -1,4 +1,4 @@
-const HttpError = require('../helpers');
+const HttpError = require('../helpers/HttpError');
 const jwt = require('jsonwebtoken');
 
 const {SECRET_KEY} = process.env;
@@ -19,7 +19,7 @@ const authenticate = async (req, res, next) => {
         };
         next()
     } catch {
-        nnext(HttpError(401))
+        next(HttpError(401))
     }
 };
 
