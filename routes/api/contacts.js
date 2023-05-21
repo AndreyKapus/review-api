@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const ctrl = require('../../controllers/contacts');
-const {isValidId, validateBody} = require('../../meddlewares');
+const {isValidId, validateBody, authenticate} = require('../../meddlewares');
 const {schemas} = require('../../models/contacts/contact');
-const authenticate = require('../../meddlewares/authenticate')
+// const authenticate = require('../../meddlewares/authenticate')
 
 const router = express.Router()
 
