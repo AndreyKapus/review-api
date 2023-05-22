@@ -22,6 +22,11 @@ const contactSchema = new Schema({
         type: String,
         require: true,
     },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        require: true,
+    },
 }, {versionKey: false, timestamps: true});
 
 contactSchema.post('save', handleStatusError);

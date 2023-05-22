@@ -21,11 +21,6 @@ const userSchema = new Schema({
         minlength: 6,
         require: true,
     },
-    owner: {
-        type: Schema.Types.ObjectId,
-        ref: "user",
-        require: true,
-    }
 }, {versionKey: false, timestamps: true});
 
 userSchema.post('save', handleStatusError);

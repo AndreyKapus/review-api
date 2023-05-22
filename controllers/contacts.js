@@ -3,7 +3,8 @@ const { ctrlWrapper } = require('../helpers');
 const {Contact} = require('../models/contacts/contact')
 
   const getAll = async (req, res) => {
-        const responce = await Contact.find();
+    const {_id: owner} = req.user;
+        const responce = await Contact.find({owner});
         res.json(responce);
 };
 
