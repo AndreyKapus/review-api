@@ -20,6 +20,11 @@ const userSchema = new Schema({
         type: String,
         minlength: 6,
         require: true,
+    },
+    owner: {
+        type: Schema.Types.ObjectId,
+        ref: "user",
+        require: true,
     }
 }, {versionKey: false, timestamps: true});
 
