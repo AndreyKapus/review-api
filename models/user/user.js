@@ -21,6 +21,10 @@ const userSchema = new Schema({
         minlength: 6,
         require: true,
     },
+    token: {
+        type: String,
+        default: '',
+    }
 }, {versionKey: false, timestamps: true});
 
 userSchema.post('save', handleStatusError);
