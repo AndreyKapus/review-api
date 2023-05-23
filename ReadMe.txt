@@ -52,7 +52,7 @@ Base URL = https://review-api-h3du.onrender.com
 
     User login: 
         - method: post
-        - /login
+        - /api/auth/login
         - schema*: 
             {
                 "email": "name@mail.com",
@@ -66,7 +66,7 @@ Base URL = https://review-api-h3du.onrender.com
 
     User get current:
         - method: get
-        - /current
+        - /api/auth/current
         - token*
         - Responces: 
             > 200 Ok
@@ -78,7 +78,7 @@ Base URL = https://review-api-h3du.onrender.com
 
     User logout: 
         - method: post
-        - /logout
+        - /api/auth/logout
         - Responces: 
             > 200 Ok 
                 {
@@ -89,4 +89,26 @@ Base URL = https://review-api-h3du.onrender.com
 
 //--------------------------------------------------------------//
     
+***** Contacts *****
 
+-> Routes {
+    
+    Contacts getAll:
+        - method: get
+        - /api/contacts
+        - token* require!
+        - Responces:
+            > 200 Ok
+                [
+                    {
+                        "_id": "646cde20a74f82552230235",
+                        "name": "vacancy name",
+                        "company": "company",
+                        "date": "00.00.0000",
+                        "link": "company-link",
+                        "owner": "646cd6baa74f8242312363e1"
+                    }
+                ]
+            > 401 Unauthorized
+            > 404 Not found
+}
