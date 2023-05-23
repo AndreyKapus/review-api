@@ -36,6 +36,21 @@ const register = async (req, res) => {
     })
 };
 
+const verifyEmail = async (req, res) => {
+    const {verificationCode} = req.params;
+    const user = await User.findOne({verificationCode});
+
+    if(!user) {
+        throw HttpError(401, "Email not found")
+    };
+
+    await User.findByIdAndUpdate(user._id, {verify: true, verificationCode: ''});
+
+    res.json({
+        message: "Success"
+    })
+}; 
+
 const login = async (req, res) => {
     const {email, password} = req.body;
 
@@ -43,6 +58,10 @@ const login = async (req, res) => {
     if(!user) {
         throw HttpError(401, "Email or password invalid")
     };
+
+    if(!user.verify) {
+        throw HttpError(401, "Email is not verified")
+    }
 
     const comparePassword = await bcrypt.compare(password, user.password);
     if(!comparePassword) {
@@ -84,5 +103,6 @@ module.exports = {
     register: ctrlWrapper(register),
     login: ctrlWrapper(login),
     getCurrent: ctrlWrapper(getCurrent),
-    logout: ctrlWrapper(logout)
+    logout: ctrlWrapper(logout),
+    verifyEmail: ctrlWrapper(verifyEmail),
 };
