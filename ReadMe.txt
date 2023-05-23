@@ -50,7 +50,18 @@ Base URL = https://review-api-h3du.onrender.com
 -> Routes {
 
     User login: 
+        - method: post
         - /login
+        - schema*: 
+            {
+                "email": "name@mail.com",
+                "password": 123456
+            };
+        - Responses: 
+            > 200 Ok:
+                token: "token"
+            > 401 Unauthorized
+                "message": "Email or password invalid"
 
     User get current:
         - /current
