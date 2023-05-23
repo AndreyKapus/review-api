@@ -77,7 +77,14 @@ Base URL = https://review-api-h3du.onrender.com
             > 401 Unauthorized
 
     User logout: 
+        - method: post
         - /logout
+        - Responces: 
+            > 200 Ok 
+                {
+                    "message": "logout success"
+                }
+            > 401 Unauthorized
 }
 
 //--------------------------------------------------------------//
