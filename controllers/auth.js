@@ -6,6 +6,8 @@ const { ctrlWrapper } = require('../helpers');
 const {nanoid} = require('nanoid');
 const sendEmail = require('../helpers/sendEMail');
 
+const verificationCode = nanoid()
+
 const {SECRET_KEY, BASE_URL} = process.env
 
 const register = async (req, res) => {
@@ -16,12 +18,11 @@ const register = async (req, res) => {
         throw HttpError(409, 'Email already in use')
     }
 
-    const verificationCode = nanoid()
-
+    
     const hashPassword = await bcrypt.hash(password, 10)
 
     const newUser = await User.create({...req.body, password: hashPassword, verificationCode});
-    
+
     const verifyEmail = {
         to: email, 
         subject: 'Verify email',
