@@ -3,9 +3,10 @@ const HttpError = require('../helpers/HttpError');
 const bcrypt = require('bcrypt');
 var jwt = require('jsonwebtoken');
 const { ctrlWrapper } = require('../helpers');
-const {nanoid} = require('nanoid')
+const {nanoid} = require('nanoid');
+const sendEmail = require('../helpers/sendEMail');
 
-const {SECRET_KEY} = process.env
+const {SECRET_KEY, BASE_URL} = process.env
 
 const register = async (req, res) => {
     const {email, password} = req.body;
@@ -20,11 +21,14 @@ const register = async (req, res) => {
     const hashPassword = await bcrypt.hash(password, 10)
 
     const newUser = await User.create({...req.body, password: hashPassword, verificationCode});
+    
     const verifyEmail = {
         to: email, 
         subject: 'Verify email',
-        html: `<a target="_blank" href="http://localhost:3001/api/auth/verify/${verificationCode}">Click to verify your email</a>`
-    }
+        html: `<a target="_blank" href="${BASE_URL}/api/auth/verify/${verificationCode}">Click to verify your email</a>`
+    };
+
+    await sendEmail(verifyEmail);
 
     res.status(201).json({
         email: newUser.email,
