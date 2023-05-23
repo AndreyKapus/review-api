@@ -180,4 +180,13 @@ Base URL = https://review-api-h3du.onrender.com
                 }
             > 400 Bad Request
 
+    Contacts deleteContacts
+        - method: delete
+        - api/contacts/:id
+        - token* required!
+        - Responces: 
+            > 200 Ok 
+                "message": "delete success"
+            > 400 Bad Request
+                "message": "646cde20a74f82552d23063f3 is not valid id"
 }
