@@ -44,6 +44,7 @@ Base URL = https://review-api-h3du.onrender.com
                 }
 };
 
+//---------------------------------------------------------------//
 
 ***** Login *****
 
@@ -64,10 +65,21 @@ Base URL = https://review-api-h3du.onrender.com
                 "message": "Email or password invalid"
 
     User get current:
+        - method: get
         - /current
+        - token*
+        - Responces: 
+            > 200 Ok
+                {
+                    "name": "Andrii",
+                    "email": "kapustnikov@ukr.net"
+                }
+            > 401 Unauthorized
 
     User logout: 
         - /logout
 }
+
+//--------------------------------------------------------------//
     
 
