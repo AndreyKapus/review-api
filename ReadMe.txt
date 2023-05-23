@@ -96,7 +96,7 @@ Base URL = https://review-api-h3du.onrender.com
     Contacts getAll:
         - method: get
         - /api/contacts
-        - token* require!
+        - token* required!
         - Responces:
             > 200 Ok
                 [
@@ -111,4 +111,34 @@ Base URL = https://review-api-h3du.onrender.com
                 ]
             > 401 Unauthorized
             > 404 Not found
+
+    Contacts getById: 
+        - method: get
+        - api/contacts/:id
+        - ?????????????????????????????
+
+    Contacts addContact:
+        - method: post
+        - api/contacts
+        - token* required!
+        - schema: 
+                {
+                    "name": "name", 
+                    "company": "company name",
+                    "date": "00.00.0000",
+                    "link": "company-link"
+                };
+        - Responces: 
+            > 201 Created
+                {
+                    "name": "name",
+                    "company": "company name",
+                    "date": "00.00.0000",
+                    "link": "company-link",
+                    "owner": "646cd6baa74f8255642463e1",
+                    "_id": "646cde20a74f82513257323f3",
+                    "createdAt": "2023-05-23T15:39:12.127Z",
+                    "updatedAt": "2023-05-23T15:39:12.127Z"
+                }
+            > 400 Bad Request
 }
