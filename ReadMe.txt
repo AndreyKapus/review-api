@@ -154,4 +154,30 @@ Base URL = https://review-api-h3du.onrender.com
                     "updatedAt": "2023-05-23T15:39:12.127Z"
                 }
             > 400 Bad Request
+
+    Contacts updateById: 
+        - method: put
+        - api/contacts/:id
+        - token* required!
+        - schema: 
+                {
+                    "name": "name", 
+                    "company": "company name",
+                    "date": "00.00.0000",
+                    "link": "company-link"
+                };
+        - Responces: 
+            > 200 Ok
+                {
+                    "name": "name",
+                    "company": "company name",
+                    "date": "00.00.0000",
+                    "link": "company-link",
+                    "owner": "646cd6baa74f8255642463e1",
+                    "_id": "646cde20a74f82513257323f3",
+                    "createdAt": "2023-05-23T15:39:12.127Z",
+                    "updatedAt": "2023-05-23T15:39:12.127Z"
+                }
+            > 400 Bad Request
+
 }
