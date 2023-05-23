@@ -115,7 +115,20 @@ Base URL = https://review-api-h3du.onrender.com
     Contacts getById: 
         - method: get
         - api/contacts/:id
-        - ?????????????????????????????
+        - token* required!
+        - Responces: 
+            > 200 Ok
+                {
+                    "_id": "646cde20a74f8252344063f3",
+                    "name": "name",
+                    "company": "company name",
+                    "date": "00.00.0000",
+                    "link": "company-link",
+                    "owner": "646cd6baa74f8435623063e1",
+                    "createdAt": "2023-05-23T15:39:12.127Z",
+                    "updatedAt": "2023-05-23T15:39:12.127Z"
+                }
+            > 401 Unauthorized
 
     Contacts addContact:
         - method: post
