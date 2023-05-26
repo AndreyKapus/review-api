@@ -103,7 +103,8 @@ const login = async (req, res) => {
 
     res.json({
         token,
-        user,
+        user: user.name,
+        email: user.email,
     });
 };
 
