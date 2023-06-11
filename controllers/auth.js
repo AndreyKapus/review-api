@@ -45,11 +45,10 @@ const verifyEmail = async (req, res) => {
     };
 
     await User.findByIdAndUpdate(user._id, {verify: true, verificationCode: ''});
-    
-    return res.redirect(process.env.CLIENT_URL)
-//     res.json({
-//         message: "Success, you can log in",
-//     })
+    res.redirect(process.env.CLIENT_URL);
+    res.json({
+        message: "Success, you can log in",
+    })
 };
 
 const resendVerifyEmail = async (req, res) => {
