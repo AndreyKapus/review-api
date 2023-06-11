@@ -72,9 +72,7 @@ const resendVerifyEmail = async (req, res) => {
 
     await sendEmail(verifyEmail);
 
-    res.json({
-        message: "Resend email: success"
-    })
+    res.redirect(process.env.CLIENT_URL)
 }
 
 const login = async (req, res) => {
