@@ -45,8 +45,9 @@ const verifyEmail = async (req, res) => {
     };
 
     await User.findByIdAndUpdate(user._id, {verify: true, verificationCode: ''});
+    
     res.json({
-        message: "Success, you can log in",
+        message: "Succsess, you can log in: http://localhost:3000/login",
     })
 };
 
