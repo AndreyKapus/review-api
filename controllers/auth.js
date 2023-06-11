@@ -50,7 +50,7 @@ const verifyEmail = async (req, res) => {
 //     res.json({
 //         message: "Success, you can log in",
 //     })
-// };
+};
 
 const resendVerifyEmail = async (req, res) => {
     const {email} = req.body;
