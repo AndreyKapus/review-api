@@ -46,7 +46,7 @@ const verifyEmail = async (req, res) => {
 
     await User.findByIdAndUpdate(user._id, {verify: true, verificationCode: ''});
     
-    res.redirect(process.env.CLIENT_URL);
+    res.redirect('http://localhost:3000/login');
 };
 
 const resendVerifyEmail = async (req, res) => {
