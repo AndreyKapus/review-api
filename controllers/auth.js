@@ -69,7 +69,7 @@ const resendVerifyEmail = async (req, res) => {
 
     await sendEmail(verifyEmail);
 
-    res.redirect('http://localhost:3000/login');
+    // res.redirect('http://localhost:3000/login');
 }
 
 const login = async (req, res) => {
