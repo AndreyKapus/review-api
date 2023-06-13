@@ -11,7 +11,7 @@ router.post('/register', validateBody(schemas.registerSchema), ctrl.register);
 
 router.get('/verify/:verificationCode', ctrl.verifyEmail);
 
-router.post('/verify', validateBody(schemas.resendVerifyEmail), ctrl.resendVerifyEmail)
+router.post('/verify', ctrl.resendVerifyEmail)
 
 // - Login -
 router.post('/login', validateBody(schemas.loginSchema), ctrl.login);
