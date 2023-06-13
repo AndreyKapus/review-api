@@ -70,12 +70,8 @@ const resendVerifyEmail = async (req, res) => {
     await sendEmail(verifyEmail);
 
     res.json({
-        user: {
-            name: user.name,
-            email: user.email,
-        },
+        massege: "Verification code has been sent"
     });
-    // res.redirect('http://localhost:3000/login');
 }
 
 const login = async (req, res) => {
