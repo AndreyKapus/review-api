@@ -4,7 +4,7 @@ const {Contact} = require('../models/contacts/contact')
 
   const getAll = async (req, res) => {
         const {_id: owner} = req.user;
-        const {page = 1, limit = 9} = req.query;
+        const {page = 1, limit = 20} = req.query;
         const skip = (page - 1) * limit;
         const responce = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit});
         res.json(responce);
