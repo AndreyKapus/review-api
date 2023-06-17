@@ -10,6 +10,12 @@ const {Contact} = require('../models/contacts/contact')
         res.json(responce);
 };
 
+const getAllLenght = async (req, res) => {
+    const {_id: owner} = req.user;
+    const responce = await Contact.find({owner}, "-createdAt -updatedAt");
+    res.json(responce.length);
+};
+
 const getById = async (req, res) => {
         const {id} = req.params;
         const result = await Contact.findById(id);
@@ -50,5 +56,6 @@ module.exports = {
     getById: ctrlWrapper(getById),
     addContact: ctrlWrapper(addContact),
     updateById: ctrlWrapper(updateById),
-    deleteContact: ctrlWrapper(deleteContact)
+    deleteContact: ctrlWrapper(deleteContact),
+    getAllLenght: ctrlWrapper(getAllLenght)
 }

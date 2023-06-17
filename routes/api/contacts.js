@@ -8,6 +8,8 @@ const router = express.Router()
 
 router.get('/', authenticate, ctrl.getAll)
 
+router.get('/', authenticate, ctrl.getAllLenght)
+
 router.get('/:id', authenticate, isValidId, ctrl.getById)
 
 router.post("/", authenticate, validateBody(schemas.addSchema), ctrl.addContact)
