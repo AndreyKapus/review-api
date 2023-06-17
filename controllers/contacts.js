@@ -13,7 +13,8 @@ const {Contact} = require('../models/contacts/contact')
 const getAllLenght = async (req, res) => {
     const {_id: owner} = req.user;
     const responce = await Contact.find({owner}, "-createdAt -updatedAt");
-    res.json(responce.length);
+    const data = responce.data.length;
+    res.json(data);
 };
 
 const getById = async (req, res) => {
