@@ -6,10 +6,10 @@ const {Contact} = require('../models/contacts/contact')
         const {_id: owner} = req.user;
         const {page = 1, limit = 20} = req.query;
         const skip = (page - 1) * limit;
-        const responce = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit});
+        const responce = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit}).populate('contacts');
         res.json({
             responce,
-            user
+            Contact
         });
 };
 
