@@ -7,7 +7,10 @@ const {Contact} = require('../models/contacts/contact')
         const {page = 1, limit = 20} = req.query;
         const skip = (page - 1) * limit;
         const responce = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit});
-        res.json(responce);
+        res.json({
+            responce,
+            owner,
+        });
 };
 
 const getById = async (req, res) => {
