@@ -9,7 +9,7 @@ const {Contact} = require('../models/contacts/contact')
         const responce = await Contact.find({owner}, "-createdAt -updatedAt", {skip, limit});
         res.json({
             responce,
-            owner,
+            user
         });
 };
 
