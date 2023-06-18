@@ -51,5 +51,4 @@ module.exports = {
     addContact: ctrlWrapper(addContact),
     updateById: ctrlWrapper(updateById),
     deleteContact: ctrlWrapper(deleteContact),
-    getAllLenght: ctrlWrapper(getAllLenght)
 }
